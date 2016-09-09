@@ -3,11 +3,11 @@
 
 
 
-
+Jason Alexander Salaxar & Juan D Valenciano
 
 MIT License
 
-Copyright (c) 2016 Jason Alexander Salaxar & Juan D Valenciano
+Copyright (c) 2016 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
