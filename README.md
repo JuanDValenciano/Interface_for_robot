@@ -5,9 +5,10 @@
 This project began with the idea of a friend Jason Alenxander (Link's Facebook), the idea is to develop an interface between a robot on this card (Figure 1),  
 
 ![](https://raw.githubusercontent.com/JuanDValenciano/Interface_for_robot/master/Hardware/IMG_7036.JPG)
-#Figure 1
+Figure 1
 
 ***
+
 #Characteristics:
 
   * uses a Atmega328 to 16Mhz
@@ -15,6 +16,8 @@ This project began with the idea of a friend Jason Alenxander (Link's Facebook),
   * 7 buttons
   * RS-232 5v and 3.3V 
   * output I2C
+
+***
 
 #Bug
 
@@ -24,6 +27,7 @@ This project began with the idea of a friend Jason Alenxander (Link's Facebook),
 
 
 ***
+
 MIT License
 
 Copyright (c) 2016 
