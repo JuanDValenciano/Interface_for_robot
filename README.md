@@ -2,19 +2,28 @@
 
 ***
 
-This project began with the idea of a friend Jason Alenxander (Link's Facebook), the idea is to develop an interface between a robot on this card (Figure 1), 
+This project began with the idea of a friend Jason Alenxander (Link's Facebook), the idea is to develop an interface between a robot on this card (Figure 1),  
 
 ![](https://raw.githubusercontent.com/JuanDValenciano/Interface_for_robot/master/Hardware/IMG_7036.JPG)
 #Figure 1
 
 ***
+#Characteristics:
 
-the card uses a Atmega328 to 16Mhz, has a buzz, 7 buttons, RS-232 5v and 3.3V and output I2C,
+  * uses a Atmega328 to 16Mhz
+  * One buzz
+  * 7 buttons
+  * RS-232 5v and 3.3V 
+  * output I2C
+
+#Bug
+
+  * Card does not have analog inputs (it is for two version).
+  * a push button is connected to nothing (Looking)
 
 
 
-
-
+***
 MIT License
 
 Copyright (c) 2016 
