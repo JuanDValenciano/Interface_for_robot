@@ -1,11 +1,19 @@
 # Interface_for_robot
 
-## YO Enmarcha Demo (screenshot)
+***
+
+This project began with the idea of a friend Jason Alenxander (Link's Facebook), the idea is to develop an interface between a robot on this card (Figure 1), 
+
 ![](https://raw.githubusercontent.com/JuanDValenciano/Interface_for_robot/master/Hardware/IMG_7036.JPG)
+#Figure 1
 
 ***
 
-Jason Alexander Salaxar & Juan D Valenciano
+the card uses a Atmega328 to 16Mhz, has a buzz, 7 buttons, RS-232 5v and 3.3V and output I2C,
+
+
+
+
 
 MIT License
 
