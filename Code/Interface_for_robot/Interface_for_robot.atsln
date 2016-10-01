@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "Interface_Robot", "Interface_Robot\Interface_Robot.cppproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AA28758-15CF-4592-97A1-15C217F4EECD}"
-	ProjectSection(SolutionItems) = preProject
-		Interface_Robot\Nokia_3310Lib\NOKIALCD.c = Interface_Robot\Nokia_3310Lib\NOKIALCD.c
-		Interface_Robot\Nokia_3310Lib\NOKIALCD.h = Interface_Robot\Nokia_3310Lib\NOKIALCD.h
-	EndProjectSection
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Interface_for_robot", "Interface_for_robot\Interface_for_robot.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

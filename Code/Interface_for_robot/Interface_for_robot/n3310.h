@@ -1,30 +1,38 @@
 /*
- * Описание     :  Это драйвер для графического LCD от Nokia 5110, а также его китайских клонов.
+ * Имя          :  n3310.h
+ *
+ * Описание     :  Это заголовочный файл для драйвера графического LCD от Nokia 3310, а также его китайских клонов.
+ *                 Базируется на коде библиотек написанных Sylvain Bissonnette и Fandi Gunawan:
+ *                 http://www.microsyl.com/index.php/2010/03/24/nokia-lcd-library/
+ *                 http://fandigunawan.wordpress.com/2008/06/18/lcd-nokia-3310-pcd8544-driver-in-winavravr-gcc/
+ *                 Основные отличия между оригиналом и клоном хорошо описаны в статье от Aheir:
+ *                 http://radiokot.ru/articles/29/
+ *
  * Автор        :  Xander Gresolio <xugres@gmail.com>
- * Веб-страница :  https://github.com/gresolio/N3310Lib
+ * Веб-страница :  http://we.easyelectronics.ru/profile/XANDER/
+ *
  * Лицензия     :  GPL v3.0
- * Оптимизация  : kobzar aka kobraz для http://cxem.net/ maodzedun@gmail.com
+ *
+ * Компилятор   :  WinAVR, GCC for AVR platform
  */
 
-#include <avr/pgmspace.h>
-#include <avr/interrupt.h>
-#ifndef _NOKIALCD_H_
-#define _NOKIALCD_H_
+#ifndef _N3310_H_
+#define _N3310_H_
 
 // закомментируйте эту директиву, если ваш дисплей оригинальный
-//#define CHINA_LCD
+#define CHINA_LCD
 
-// Порт к которому подключен LCD (здесь пример распиновки для ATmega8A)
+// Порт к которому подключен LCD (здесь пример распиновки для ATmega8)
 // Библиотека использует аппаратный SPI, поэтому если хотите иной порт - придется реализовать SPI программно)
 #define LCD_PORT                   PORTB
 #define LCD_DDR                    DDRB
 
 // Распиновка порта
-#define LCD_DC_PIN                 PB1   // DC
-#define LCD_CE_PIN                 PB2   // SCE
-#define SPI_MOSI_PIN               PB3  // SDIN 
-#define LCD_RST_PIN                PB4   // RESET
-#define SPI_CLK_PIN                PB5  // SCLK 
+#define LCD_DC_PIN                 PB1
+#define LCD_CE_PIN                 PB2
+#define SPI_MOSI_PIN               PB3   // SDIN дисплея обязательно подключаем к MOSI аппаратного SPI
+#define LCD_RST_PIN                PB4
+#define SPI_CLK_PIN                PB5   // SCLK дисплея обязательно подключаем к SCK аппаратного SPI
 
 // Разрешение дисплея в пикселях
 #define LCD_X_RES                  84    // разрешение по горизонтали
@@ -71,22 +79,22 @@ typedef enum
 
 } LcdFontSize;
 
-// Прототипы функций, детальную информацию смотрим внутри n5110lcd.c
-void Lcd_init      ( void );   // Inicializa la LCD
-void Lcd_clear     ( void );   // limpia la LCD
-void Lcd_update    ( void );   // Actualiza la LCD
-void LcdContrast   ( byte contrast );   
-void LcdImage      ( const byte *imageData );   // Carga una imagen en la LCD  Flash ROM
-byte LcdGotoXY      ( byte x, byte y );   //va a la ubicacion de  x,y
-byte LcdChr        ( LcdFontSize size, byte ch );   
-byte Lcd_print     ( byte x, byte y, LcdFontSize size, byte dataArray[] );   
-byte Lcd_prints    ( byte x, byte y, LcdFontSize size, const byte *dataPtr );   
-void Lcd_printf    ( byte x, byte y, LcdFontSize size, float data, int accuracy );   
-byte Lcd_pixel      ( byte x, byte y, LcdPixelMode mode );   
-byte Lcd_line       ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode );   
-byte Lcd_circle     ( byte x, byte y, byte radius, LcdPixelMode mode);   
-byte Lcd_rect_empty       ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode );   
-byte Lcd_rect  ( byte baseX, byte baseY, byte height, byte width, LcdPixelMode mode );   
+// Прототипы функций, детальную информацию смотрим внутри n3310lcd.c
+void LcdInit       ( void );   // Инициализация
+void LcdClear      ( void );   // Очистка буфера
+void LcdUpdate     ( void );   // Копирование буфера в ОЗУ дисплея
+void LcdImage      ( const byte *imageData );   // Рисование картинки из массива в Flash ROM
+void LcdContrast   ( byte contrast );   // Установка контрастности дисплея
+byte LcdGotoXYFont ( byte x, byte y );   // Установка курсора в позицию x,y
+byte LcdChr        ( LcdFontSize size, byte ch );   // Вывод символа в текущей позиции
+byte LcdStr        ( LcdFontSize size, byte dataArray[] );   // Вывод строки сохраненной в RAM
+byte LcdFStr       ( LcdFontSize size, const byte *dataPtr );   // Вывод строки сохраненной в Flash ROM
+byte LcdPixel      ( byte x, byte y, LcdPixelMode mode );   // Точка
+byte LcdLine       ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode );   // Линия
+byte LcdCircle     ( byte x, byte y, byte radius, LcdPixelMode mode);   // Окружность
+byte LcdRect       ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode );   // Прямоугольник
+byte LcdSingleBar  ( byte baseX, byte baseY, byte height, byte width, LcdPixelMode mode );   // Один 
+byte LcdBars       ( byte data[], byte numbBars, byte width, byte multiplier );   // Несколько
 
 
 
@@ -258,4 +266,4 @@ static const byte FontLookup [][5] PROGMEM=
    { 0x48, 0x54, 0x34, 0x14, 0x7C }    // я 0xFF 255
 };
 
-#endif  /*  _N5110_H_ */
+#endif  /*  _N3310_H_ */
